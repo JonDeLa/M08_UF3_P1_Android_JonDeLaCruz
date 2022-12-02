@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //variables
+    //variables Movimiento
     public Rigidbody2D rb;
-
     public float mSpeed = 5f;
     public float rSpeed = 3f;
     //todo lo que necesitamos para movernos
@@ -14,6 +13,11 @@ public class Player : MonoBehaviour
     Vector3 tPosition, targetPosition;
     bool isMoving = false;
     float preDistance, currentDistance;
+    //variables playerStat
+    public int lifeCount = 3;
+    public int scorePoints = 0;
+    //variables mecanicas
+    bool slow = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -86,5 +90,54 @@ public class Player : MonoBehaviour
             touchPosition.x - transform.position.x,
             touchPosition.y - transform.position.y);
         transform.up = dir;
+    }
+    void getDMG()
+    {
+        lifeCount--;
+        print("Vida" + lifeCount);
+        if (lifeCount <= 0)
+        {
+            die();
+        }
+    }
+    void getHP()
+    {
+        if(lifeCount <3)
+        lifeCount++;
+
+    }
+    void speedUP()
+    {
+        StartCoroutine(SPEED());
+        mSpeed = 5f;
+    }
+    IEnumerator SPEED()
+    {
+        mSpeed = 8f;
+        yield return new WaitForSeconds(4);
+    }
+    void die()
+    {
+        //aqui desactivamos todo y morimos
+    }
+    private void OnCollisionEnter2D(Collision2D _col)
+    {
+        if (_col.transform.tag == "Speed")
+        {
+            speedUP();
+        }
+        if(_col.transform.tag == "Hp")
+        {
+            getHP();
+        }
+        if (_col.transform.tag == "Slow")
+        {
+            //Accedemos al enemigo y hacemos que se realentice
+        }
+        if(_col.transform.tag == "Enemy")
+        {
+            getDMG();
+        }
+
     }
 }
