@@ -7,12 +7,14 @@ public class EnemyController : MonoBehaviour
 {
     //variables movimiento
     public float speed = 1f;
-    public Rigidbody2D rb;
+     Rigidbody2D rb;
+    [SerializeField]
+     private GameManager _gm;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     
@@ -40,9 +42,10 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D _col)
     {
-        if (_col.transform.tag == "Limit")
+        if (_col.transform.tag == "Die")
         {
             //Subir Score
+            _gm.updateScore(1);
             //Morir
             Destroy(gameObject);
         }
