@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -18,9 +19,14 @@ public class Player : MonoBehaviour
     public int scorePoints = 0;
     //variables mecanicas
     bool slow = false;
+    //Referencias
+    public GameObject _gm;
+   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _gm = GameObject.Find("GameManager");
+       
     }
 
     // Update is called once per frame
@@ -91,7 +97,7 @@ public class Player : MonoBehaviour
             touchPosition.y - transform.position.y);
         transform.up = dir;
     }
-    void getDMG()
+    public void getDMG()
     {
         lifeCount--;
         print("Vida" + lifeCount);
@@ -100,44 +106,52 @@ public class Player : MonoBehaviour
             die();
         }
     }
-    void getHP()
+    public void getHP()
     {
         if(lifeCount <3)
         lifeCount++;
 
     }
-    void speedUP()
+    public void speedUP()
     {
         StartCoroutine(SPEED());
-        mSpeed = 5f;
+        
     }
     IEnumerator SPEED()
     {
         mSpeed = 8f;
         yield return new WaitForSeconds(4);
+        mSpeed = 5f;
+        yield return new WaitForSeconds(1);
     }
     void die()
     {
-        //aqui desactivamos todo y morimos
+        //aqui desactivamos todo y morimos+
+        Destroy(gameObject);
     }
-    private void OnCollisionEnter2D(Collision2D _col)
+    private void OnTriggerEnter2D(Collider2D _col)
     {
         if (_col.transform.tag == "Speed")
         {
             speedUP();
+            Destroy(_col.gameObject);
         }
-        if(_col.transform.tag == "Hp")
+        if (_col.transform.tag == "Hp")
         {
             getHP();
+            Destroy(_col.gameObject);
         }
         if (_col.transform.tag == "Slow")
         {
-            //Accedemos al enemigo y hacemos que se realentice
+            _gm.GetComponent<SlowTime>().slowMotion();
+            Destroy(_col.gameObject);
         }
-        if(_col.transform.tag == "Enemy")
+        if (_col.transform.tag == "Enemy")
         {
             getDMG();
+            _col.transform.GetComponent<EnemyController>().die();
         }
 
     }
 }
+ 
