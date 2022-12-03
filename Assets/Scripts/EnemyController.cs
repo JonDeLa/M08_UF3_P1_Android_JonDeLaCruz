@@ -6,7 +6,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     //variables movimiento
-    public float speed = 1f;
+    [SerializeField]
+    float speed;
      Rigidbody2D rb;
     [SerializeField]
      private GameManager _gm;
@@ -15,6 +16,7 @@ public class EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
     }
 
     
@@ -30,10 +32,11 @@ public class EnemyController : MonoBehaviour
 
     public void incrementSpeed(float _speed)
     {
+        speed = 1;
         speed+= _speed;
-        if (speed>5f)
+        if (speed>10f)
         {
-            speed = 5f;
+            speed = 10f;
         }
     }
     public void die()
