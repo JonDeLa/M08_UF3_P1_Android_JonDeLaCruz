@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     bool slow = false;
     //Referencias
     public GameObject _gm;
+    public Text healthText;
    
     void Start()
     {
@@ -101,6 +103,7 @@ public class Player : MonoBehaviour
     {
         lifeCount--;
         print("Vida" + lifeCount);
+        healthText.text = "Health " + lifeCount;
         if (lifeCount <= 0)
         {
             die();
@@ -110,7 +113,7 @@ public class Player : MonoBehaviour
     {
         if(lifeCount <3)
         lifeCount++;
-
+        healthText.text = "Health " + lifeCount;
     }
     public void speedUP()
     {

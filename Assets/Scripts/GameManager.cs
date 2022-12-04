@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
     float enemySpeedIncrement = 0;
     public Quaternion rotation;
     //scores
-    public int score = 0;
+    int score = 0;
+    public Text scoreText;
     void Start()
     {
         isCreating= true;
@@ -107,8 +109,13 @@ public class GameManager : MonoBehaviour
         isGenerating= false;
         yield return new WaitForSeconds(1f);
     }
-    public void updateScore(int _score)
+    public void updateScore()
     {
-        score += _score;
+       
+        score++;
+        
+        scoreText.text = "" + score.ToString();
+        print (score);
+       
     }
 }

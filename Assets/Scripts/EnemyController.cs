@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
         if (_col.transform.tag == "Die")
         {
             //Subir Score
-            _gm.updateScore(1);
+            _gm.updateScore();
             //Morir
             Destroy(gameObject);
         }
