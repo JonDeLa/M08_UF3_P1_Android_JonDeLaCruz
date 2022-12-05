@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
     void die()
     {
         //aqui desactivamos todo y morimos+
+        _gm.GetComponent<GameManager>().menuGameOver();
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D _col)

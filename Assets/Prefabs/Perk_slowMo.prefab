@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1015092446237245516}
   - component: {fileID: 1015092446237245519}
   - component: {fileID: 1015092446237245518}
+  - component: {fileID: 7005943516583347980}
   m_Layer: 0
   m_Name: Perk_slowMo
   m_TagString: Slow
@@ -101,3 +102,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7005943516583347980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015092446237245513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b960f5cbaa6c84c82a3c356eb9b425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
