@@ -23,12 +23,13 @@ public class Player : MonoBehaviour
     //Referencias
     public GameObject _gm;
     public Text healthText;
+    GameObject _pl;
    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _gm = GameObject.Find("GameManager");
-       
+        _pl = gameObject;
     }
 
     // Update is called once per frame
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         //Movement();
         MoveByTouch();
         faceTouch();
+        CheckLimitPlayer();
     }
     //funcion para el movimiento
     //void Movement()
@@ -157,6 +159,25 @@ public class Player : MonoBehaviour
             _col.transform.GetComponent<EnemyController>().die();
         }
 
+    }
+    private void CheckLimitPlayer()
+    {
+        if (transform.position.x > 2.799f)
+        {
+            transform.position = new Vector2(2.799f, transform.position.y);
+        }
+        if (transform.position.x < -2.82f)
+        {
+            transform.position = new Vector2(-2.82f, transform.position.y);
+        }
+        if (transform.position.y > 5f)
+        {
+            transform.position = new Vector2(transform.position.x,5f);
+        }
+        if (transform.position.y < -5f)
+        {
+            transform.position = new Vector2(transform.position.x, -5f);
+        }
     }
 }
  

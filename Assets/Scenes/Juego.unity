@@ -1212,7 +1212,7 @@ MonoBehaviour:
   pickUp1: {fileID: 6198729692625686293, guid: 8fd20ae30d4abea4e8a29163ab8851ae, type: 3}
   pickUp2: {fileID: 1015092446237245513, guid: 69c92616a77fa114f87692bcf6e77589, type: 3}
   pickUp3: {fileID: 2752540831533783149, guid: 05d2df9161b2c5441805bcb947203ef6, type: 3}
-  _destroy: {fileID: 0}
+  _destroy: {fileID: 555657920}
 --- !u!114 &753672074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2842,7 +2842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1857070963
 MonoBehaviour:
   m_ObjectHideFlags: 0

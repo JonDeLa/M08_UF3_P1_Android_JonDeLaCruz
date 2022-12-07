@@ -977,7 +977,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1020894381}
   - component: {fileID: 1020894380}
-  - component: {fileID: 1020894379}
   m_Layer: 0
   m_Name: MenuManagment
   m_TagString: Untagged
@@ -985,20 +984,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1020894379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020894378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d41ee0272b8a8df48943b8b1019992f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pointer: {fileID: 8885371311637595271, guid: 1fade484d831a184ca3d4fad7832fb21, type: 3}
-  touches: []
 --- !u!114 &1020894380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1675,6 +1660,7 @@ GameObject:
   - component: {fileID: 2099535418}
   - component: {fileID: 2099535417}
   - component: {fileID: 2099535416}
+  - component: {fileID: 2099535419}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1748,3 +1734,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099535419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099535415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41ee0272b8a8df48943b8b1019992f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pointer: {fileID: 8885371311637595271, guid: 1fade484d831a184ca3d4fad7832fb21, type: 3}
+  touches: []
