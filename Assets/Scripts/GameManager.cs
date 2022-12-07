@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
     //Referencias pickUps
     public GameObject pickUp1, pickUp2, pickUp3;
     private bool pickupGenerating;
-
+    public GameObject _destroy;
     void Start()
     {
         isCreating = true;
@@ -41,6 +40,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(false);
         pauseMenu.SetActive(false);
         gameStop = false;
+        _destroy.SetActive(false);
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         gameOverScoreText.text = "Has consegido un total de " + score + "puntos";
 
         gameStop = true;
-
+        _destroy.SetActive(true);
     }
     public void menuPause()
     {
@@ -188,6 +188,10 @@ public class GameManager : MonoBehaviour
     IEnumerator instanceEnemy()
     {
         isGenerating = true;
+        randomSpawns();
+        Instantiate(enemy, currentSpawn, rotation);
+        randomSpawns();
+        Instantiate(enemy, currentSpawn, rotation);
         randomSpawns();
         Instantiate(enemy, currentSpawn, rotation);
         enemySpeedIncrement += 0.1f;
